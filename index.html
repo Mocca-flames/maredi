@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Maredi Protection - Always Vigilant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="css/style.min.css" />
+  <link rel="preload" as="style" href="css/loading.css" />
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/barlowcondensed/v18/gi0uN1dFwm-1YXo5ILNa27SfQZQ.woff2" type="font/woff2" crossorigin />
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v18/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/style.min.css" />
+  <link rel="stylesheet" href="css/loading.css" />
+  <link rel="preload" as="image" href="assets/optimized/logo.webp" />
+  <link rel="preload" as="image" href="assets/optimized/receptionist.webp" />
+  <link rel="preload" as="image" href="assets/optimized/response_vehicle.webp" />
+  <link rel="preload" as="image" href="assets/optimized/cctv_installation.webp" />
+  <link rel="preload" as="image" href="assets/optimized/control_room.webp" />
+  <link rel="preload" as="image" href="assets/optimized/vip.webp" />
+  <link rel="preload" as="image" href="assets/optimized/officer.webp" />
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-logo">
+      <img src="assets/optimized/logo.webp" alt="" width="48" height="48" />
+      <div class="loader-brand">MAREDI<small>ALWAYS VIGILANT</small></div>
+    </div>
+    <div class="loader-radar">
+      <div class="loader-radar-ring"></div>
+      <div class="loader-radar-ring"></div>
+      <div class="loader-radar-ring"></div>
+      <div class="loader-radar-sweep"></div>
+      <div class="loader-dot"></div>
+    </div>
+    <div class="loader-text">Securing your perimeter</div>
+  </div>
+  <div id="app"></div>
+  <script>
+    window.__MAREDI_LOADER__ = {
+      minShow: 1200,
+      fadeOut: 600,
+      assets: [
+        'assets/optimized/logo.webp',
+        'assets/optimized/receptionist.webp',
+        'assets/optimized/response_vehicle.webp',
+        'assets/optimized/cctv_installation.webp',
+        'assets/optimized/control_room.webp',
+        'assets/optimized/vip.webp',
+        'assets/optimized/officer.webp',
+        'assets/hero.webm'
+      ]
+    };
+  </script>
+  <script src="js/app.min.js"></script>
+</body>
+</html>

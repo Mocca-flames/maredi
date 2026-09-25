@@ -1,0 +1,35 @@
+============================================================
+Maredi Site Optimization Report
+============================================================
+
+WebP Image Optimization (assets/raw/ -> assets/optimized/)
+------------------------------------------------------------
+  cctv_installation.webp: 245.3 KB -> 191.3 KB (22.0% reduction)
+  control_room.webp: 167.4 KB -> 124.6 KB (25.6% reduction)
+  officer.webp: 177.3 KB -> 136.2 KB (23.2% reduction)
+  receptionist.webp: 40.6 KB -> 38.2 KB (5.9% reduction)
+  response_vehicle.webp: 237.6 KB -> 176.1 KB (25.9% reduction)
+  vehicle_motion.webp: 196.3 KB -> 148.5 KB (24.3% reduction)
+  vip.webp: 126.5 KB -> 99.1 KB (21.6% reduction)
+
+Logo Optimization
+------------------------------------------------------------
+  logo.webp: 252.0 KB -> 47.6 KB (81.1% reduction)
+  logo.png: 252.0 KB -> 245.2 KB (2.7% reduction)
+
+CSS Minification
+------------------------------------------------------------
+  css/style.min.css: 37.8 KB -> 32.2 KB (14.8% reduction)
+  css/loading.min.css: 2.2 KB -> 2.0 KB (9.2% reduction)
+
+JS Minification
+------------------------------------------------------------
+  app.min.js: 62.0 KB -> 51.2 KB (17.4% reduction)
+
+Gitkeep
+------------------------------------------------------------
+  assets/optimized/.gitkeep created
+
+============================================================
+Optimization complete.
+============================================================

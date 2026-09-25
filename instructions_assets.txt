@@ -1,0 +1,53 @@
+MAREDI PROTECTION — ASSET BRIEF
+================================
+
+PROJECT STRUCTURE (refactored)
+-------------------------------
+index.html        - Main HTML entry point
+css/style.css     - All stylesheets
+js/app.js         - All application logic (IIFE module)
+instructions_assets.txt - This file
+
+The site currently runs on an animated CSS/SVG radar hero (no photo/video
+required to function) so it's usable today. Swap in real media as you shoot it,
+using the specs below. Replace via the "assets" capability or by editing
+the relevant file directly.
+
+1) HERO VIDEO (highest priority)
+   - Format: MP4 (H.264), 8–15 sec loop, muted/autoplay-safe, 1080x1920 (portrait
+     crop will be applied on mobile) or 1920x1080 landscape master.
+   - Content ideas, in order of impact:
+       a) Armed response vehicle pulling up to a gate at night, blue light bar visible
+       b) Officer doing an access-control check at an estate boom gate
+       c) Control-room operator watching a bank of live monitors
+   - Keep it under ~8MB compressed (site currently embeds media inline; anything
+     larger should be hosted and referenced by URL instead of inlined).
+   - Overlay-safe: avoid busy motion in the top-center 40% where the headline sits.
+
+2) SERVICE PHOTOS (one hero image per service, 1600x1000 min, landscape)
+   - Manned Guarding: officer at a gatehouse / reception desk, PSIRA badge visible
+   - Armed Response: response vehicle in motion or parked with lights on
+   - Electronic Security: technician installing a CCTV camera / control panel
+   - Off-Site Monitoring: control room wall of screens, operator in frame
+   - Specialized/VIP: close-protection officer beside a vehicle (no faces of
+     actual clients — use a generic/model shot or silhouette for privacy)
+
+3) ICONS
+   - Current icons are hand-drawn inline SVG (lightweight, on-brand blue).
+     No action needed unless you want a custom icon set to match your crest's
+     eagle motif more literally (e.g. wing-shaped dividers).
+
+4) LOGO
+   - Already embedded as a base64 data URI in js/app.js (window.__MAREDI_LOGO__).
+   - If you get a vector (SVG) version of the crest, swap it in for crisper
+     scaling at large hero sizes.
+
+5) TRUST/PROOF ASSETS (optional but high-converting)
+   - PSIRA registration certificate (photographed or scanned) for a "verified"
+     badge section
+   - 3–5 short client testimonial clips or quotes (estate manager, business owner)
+   - Photos of your actual fleet/vehicles for the "deployment strength" band
+
+DELIVERY
+   - Once you have real assets, send them back in chat and I'll swap them into
+     the published page directly — no rebuild needed.
