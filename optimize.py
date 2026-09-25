@@ -76,7 +76,6 @@ def minify_css(src_path, dst_path):
     css = re.sub(r"\s*\(\s*", "(", css)
     css = re.sub(r"\s*\)\s*", ")", css)
     css = re.sub(r"\s*,\s*", ",", css)
-    css = re.sub(r"\s*\.\s*", ".", css)
     css = re.sub(r"\s*:\s*", ":", css)
     css = re.sub(r"\s*;\s*", ";", css)
     css = re.sub(r"[ \t]+", " ", css)

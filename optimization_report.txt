@@ -19,12 +19,12 @@ Logo Optimization
 
 CSS Minification
 ------------------------------------------------------------
-  css/style.min.css: 37.8 KB -> 32.2 KB (14.8% reduction)
+  css/style.min.css: 37.6 KB -> 32.0 KB (14.8% reduction)
   css/loading.min.css: 2.2 KB -> 2.0 KB (9.2% reduction)
 
 JS Minification
 ------------------------------------------------------------
-  app.min.js: 62.0 KB -> 51.2 KB (17.4% reduction)
+  app.min.js: 63.7 KB -> 52.3 KB (17.9% reduction)
 
 Gitkeep
 ------------------------------------------------------------

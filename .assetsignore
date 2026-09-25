@@ -1,0 +1,11 @@
+.git
+.git/**
+.wrangler
+.wrangler/**
+.gitignore
+node_modules
+node_modules/**
+optimize.py
+serve.py
+instructions_assets.txt
+optimization_report.txt

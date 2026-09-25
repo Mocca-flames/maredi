@@ -310,8 +310,17 @@ function initValuePropScroll(section){
   var items = section.querySelectorAll('.valueprop-point');
   var stats = section.querySelector('.valueprop-stats');
   var stages = items.length + 1;
+  var ticking = false;
 
-  function onScroll(){
+  function reveal(el, start, end, progress){
+    var t = (progress - start) / (end - start);
+    t = Math.max(0, Math.min(1, t));
+    el.style.opacity = t;
+    el.style.transform = 'translateY(' + (10 * (1 - t)) + 'px)';
+  }
+
+  function update(){
+    ticking = false;
     if(!document.body.contains(section)){
       window.removeEventListener('scroll', onScroll);
       return;
@@ -320,14 +329,21 @@ function initValuePropScroll(section){
     var scrollable = rect.height - window.innerHeight;
     var progress = scrollable > 0 ? (-rect.top) / scrollable : 0;
     progress = Math.max(0, Math.min(1, progress));
-    var activeStage = Math.floor(progress * stages);
-    items.forEach(function(el, i){ el.classList.toggle('is-visible', activeStage > i); });
-    if(stats) stats.classList.toggle('is-visible', activeStage >= items.length);
+    items.forEach(function(el, i){ reveal(el, i / stages, (i + 0.7) / stages, progress); });
+    if(stats) reveal(stats, items.length / stages, (items.length + 0.7) / stages, progress);
+  }
+
+  /* rAF-throttled so the reveal stays glued to the scroll position without jank */
+  function onScroll(){
+    if(!ticking){
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
   }
 
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll, {passive:true});
-  onScroll();
+  update();
 }
 
 function renderRiskStrip(){
@@ -378,7 +394,6 @@ h('div', {class:'service-grid'}, SERVICES.map(function(s){
           icon(s.icon),
           h('h3', {}, [s.title]),
           h('div', {class:'service-lead'}, [s.lead]),
-          h('p', {class:'service-body'}, [s.body]),
           h('ul', {class:'service-features'}, featured.map(function(f){
             return h('li', {}, [h('span', {class:'feat-check', html: ICONS.check}), h('span', {}, [f[0]])]);
           })),
@@ -396,7 +411,6 @@ h('div', {class:'service-grid'}, SERVICES.map(function(s){
           icon('shield'),
           h('h3', {}, ['Not sure what you need?']),
           h('div', {class:'service-lead'}, ['Answer a few questions about your site']),
-          h('p', {class:'service-body'}, ['We\'ll scope the right combination of guarding, response and technology — no obligation, free of charge.']),
           h('ul', {class:'service-features'}, [
             h('li', {}, [h('span', {class:'feat-check', html: ICONS.check}), h('span', {}, ['Free risk assessment'])]),
             h('li', {}, [h('span', {class:'feat-check', html: ICONS.check}), h('span', {}, ['No commitment required'])])
@@ -1198,5 +1212,43 @@ function render(){
 
 /* ---------- boot ---------- */
 render();
+
+/* ---------- loading screen ---------- */
+(function hideLoader(){
+  var cfg = window.__MAREDI_LOADER__ || {};
+  var minShow = cfg.minShow || 0;
+  var fadeOut = cfg.fadeOut || 0;
+  var assets = cfg.assets || [];
+  var start = Date.now();
+
+  function preload(src){
+    return new Promise(function(resolve){
+      if(/\.(webm|mp4)$/i.test(src)){
+        var v = document.createElement('video');
+        v.onloadeddata = v.oncanplay = v.onerror = function(){ resolve(); };
+        v.src = src;
+      } else {
+        var img = new Image();
+        img.onload = img.onerror = function(){ resolve(); };
+        img.src = src;
+      }
+    });
+  }
+
+  function finish(){
+    var loader = document.getElementById('loader');
+    if(!loader) return;
+    var elapsed = Date.now() - start;
+    var wait = Math.max(0, minShow - elapsed);
+    setTimeout(function(){
+      loader.classList.add('hidden');
+      setTimeout(function(){ if(loader.parentNode) loader.parentNode.removeChild(loader); }, fadeOut);
+    }, wait);
+  }
+
+  // Safety net: never leave the loader stuck if an asset hangs.
+  var timeout = setTimeout(finish, 6000);
+  Promise.all(assets.map(preload)).then(function(){ clearTimeout(timeout); finish(); });
+})();
 
 })();
